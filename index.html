@@ -154,6 +154,15 @@
             animation: whatsapp-pulse 2s infinite;
         }
 
+        /* Preloader Animation */
+        @keyframes loading-progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        .animate-progress {
+            animation: loading-progress 2s ease-in-out forwards;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -369,7 +378,8 @@
                     
                     <div class="motion-item motion-fade-up delay-100 mb-6 bg-white/5 p-6 rounded-xl border-r-4 border-accent relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-accent/5 pointer-events-none"></div>
-                        <h3 class="text-xl md:text-2xl text-white font-serif leading-relaxed tracking-wide text-center" style="font-family: serif;">
+                        <!-- Fixed Quranic Verse styling for mobile -->
+                        <h3 class="text-lg md:text-2xl text-white font-serif leading-relaxed text-center" style="font-family: serif; text-wrap: balance;">
                             {‏وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْث لَا يَحْتَسِبُ}
                         </h3>
                         <span class="text-xs text-accent mt-3 block text-center font-bold tracking-wider">صدق الله العظيم</span>
@@ -457,6 +467,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/MP-Jy-_Za4w/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-1">
                                     <img src="https://img.youtube.com/vi/MP-Jy-_Za4w/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-1'), 'MP-Jy-_Za4w')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
@@ -475,6 +491,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/eQz9ZxH903o/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-2">
                                     <img src="https://img.youtube.com/vi/eQz9ZxH903o/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-2'), 'eQz9ZxH903o')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
@@ -493,6 +515,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/_wVvMOZzgW0/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-3">
                                     <img src="https://img.youtube.com/vi/_wVvMOZzgW0/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-3'), '_wVvMOZzgW0')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
@@ -511,6 +539,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/8N5VUJhMgYs/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-4">
                                     <img src="https://img.youtube.com/vi/8N5VUJhMgYs/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-4'), '8N5VUJhMgYs')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
@@ -529,6 +563,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/IBl1zT2k2zA/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-5">
                                     <img src="https://img.youtube.com/vi/IBl1zT2k2zA/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-5'), 'IBl1zT2k2zA')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
@@ -547,6 +587,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/PvLexpRxyxQ/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-6">
                                     <img src="https://img.youtube.com/vi/PvLexpRxyxQ/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-6'), 'PvLexpRxyxQ')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
@@ -565,6 +611,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/uL5Vuz1zb64/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-7">
                                     <img src="https://img.youtube.com/vi/uL5Vuz1zb64/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-7'), 'uL5Vuz1zb64')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
@@ -583,6 +635,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/Bosk9wIlRqA/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-8">
                                     <img src="https://img.youtube.com/vi/Bosk9wIlRqA/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-8'), 'Bosk9wIlRqA')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
@@ -601,6 +659,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/mlB-VAo8U6k/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-9">
                                     <img src="https://img.youtube.com/vi/mlB-VAo8U6k/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-9'), 'mlB-VAo8U6k')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
@@ -619,6 +683,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/8THoIgcXJOE/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-10">
                                     <img src="https://img.youtube.com/vi/8THoIgcXJOE/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-10'), '8THoIgcXJOE')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
@@ -637,6 +707,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/rPm8aiK_gFU/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-11">
                                     <img src="https://img.youtube.com/vi/rPm8aiK_gFU/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-11'), 'rPm8aiK_gFU')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
@@ -655,6 +731,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/MQHHp-F0Wbc/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-12">
                                     <img src="https://img.youtube.com/vi/MQHHp-F0Wbc/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-12'), 'MQHHp-F0Wbc')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
@@ -673,6 +755,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/PXppZVXnPcU/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-13">
                                     <img src="https://img.youtube.com/vi/PXppZVXnPcU/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-13'), 'PXppZVXnPcU')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
@@ -691,6 +779,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/AItLCyRVHE0/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-14">
                                     <img src="https://img.youtube.com/vi/AItLCyRVHE0/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-14'), 'AItLCyRVHE0')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
@@ -709,6 +803,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/zcbU8hVReZI/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-new-15">
                                     <img src="https://img.youtube.com/vi/zcbU8hVReZI/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-15'), 'zcbU8hVReZI')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
@@ -728,6 +828,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/xRWF01Z-RL8/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-1">
                                     <img src="https://img.youtube.com/vi/xRWF01Z-RL8/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-1'), 'xRWF01Z-RL8')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
@@ -745,6 +851,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/1wzhvSzLXG0/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-2">
                                     <img src="https://img.youtube.com/vi/1wzhvSzLXG0/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-2'), '1wzhvSzLXG0')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
@@ -762,6 +874,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/qB58FYGJqus/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-3">
                                     <img src="https://img.youtube.com/vi/qB58FYGJqus/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-3'), 'qB58FYGJqus')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
@@ -779,6 +897,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/VnQ0uVVG6ko/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-4">
                                     <img src="https://img.youtube.com/vi/VnQ0uVVG6ko/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-4'), 'VnQ0uVVG6ko')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
@@ -796,6 +920,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/-YZ6sll5lgw/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-5">
                                     <img src="https://img.youtube.com/vi/-YZ6sll5lgw/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-5'), '-YZ6sll5lgw')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
@@ -813,6 +943,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/0Qhwj_IwBnw/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-6">
                                     <img src="https://img.youtube.com/vi/0Qhwj_IwBnw/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-6'), '0Qhwj_IwBnw')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
@@ -830,6 +966,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/oBk6TLzWfjM/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-7">
                                     <img src="https://img.youtube.com/vi/oBk6TLzWfjM/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-7'), 'oBk6TLzWfjM')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
@@ -847,6 +989,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/jRoNuB-kBvI/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-8">
                                     <img src="https://img.youtube.com/vi/jRoNuB-kBvI/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-8'), 'jRoNuB-kBvI')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
@@ -864,6 +1012,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/pnDMM2VkBt4/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-9">
                                     <img src="https://img.youtube.com/vi/pnDMM2VkBt4/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-9'), 'pnDMM2VkBt4')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
@@ -881,6 +1035,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/sknU1NwM3xI/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-10">
                                     <img src="https://img.youtube.com/vi/sknU1NwM3xI/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-10'), 'sknU1NwM3xI')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
@@ -898,6 +1058,12 @@
                                 <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/uT2MYBp70pM/hqdefault.jpg');"></div>
                                 <div class="phone-content relative group" id="v-vid-11">
                                     <img src="https://img.youtube.com/vi/uT2MYBp70pM/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-11'), 'uT2MYBp70pM')">
                                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                                             <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
@@ -939,9 +1105,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-1">
                                     <img src="https://img.youtube.com/vi/lGbKT8wgKsg/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-1'), 'lGbKT8wgKsg')">
-                                        <!-- Transparent overlay to catch click -->
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
                                     </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-1'), 'lGbKT8wgKsg')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">عيادات إحسان المتنقلة – رعايتك الصحية في كل مكان</h4>
@@ -954,7 +1124,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-2">
                                     <img src="https://img.youtube.com/vi/PcD13GnoZJY/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-2'), 'PcD13GnoZJY')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-2'), 'PcD13GnoZJY')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">أولاد عصمان للأثاث – خبرة تتحدث وجودة تُلمس</h4>
@@ -967,7 +1143,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-3">
                                     <img src="https://img.youtube.com/vi/pSeJ_oDMgng/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-3'), 'pSeJ_oDMgng')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-3'), 'pSeJ_oDMgng')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">أفضل أنواع التمر السعودي الفاخر</h4>
@@ -980,7 +1162,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-4">
                                     <img src="https://img.youtube.com/vi/ujghmD8D3xw/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-4'), 'ujghmD8D3xw')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-4'), 'ujghmD8D3xw')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">عسل طبيعي... نقي من قلب الخلية</h4>
@@ -993,7 +1181,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-5">
                                     <img src="https://img.youtube.com/vi/Uji3itqnJfg/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-5'), 'Uji3itqnJfg')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-5'), 'Uji3itqnJfg')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">لبن طبيعي بطعم الانتعاش..</h4>
@@ -1006,7 +1200,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-6">
                                     <img src="https://img.youtube.com/vi/WYoktRemrHg/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-6'), 'WYoktRemrHg')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-6'), 'WYoktRemrHg')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">الحجز التحفظي حماية لحقك المالي</h4>
@@ -1019,7 +1219,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-7">
                                     <img src="https://img.youtube.com/vi/nrQqf-bGQ0Y/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-7'), 'nrQqf-bGQ0Y')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-7'), 'nrQqf-bGQ0Y')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">Ledemy.. طريقك للتعلم أينما كنت</h4>
@@ -1032,7 +1238,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-8">
                                     <img src="https://img.youtube.com/vi/LXSLGqFESvM/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-8'), 'LXSLGqFESvM')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-8'), 'LXSLGqFESvM')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">حركة و بركة</h4>
@@ -1045,7 +1257,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-9">
                                     <img src="https://img.youtube.com/vi/5bpArJGMpHM/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-9'), '5bpArJGMpHM')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-9'), '5bpArJGMpHM')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">ديرتي تستاهل: كل كفاءة في مكانها الصحيح</h4>
@@ -1058,7 +1276,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-10">
                                     <img src="https://img.youtube.com/vi/ArRAUm4fbiU/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-10'), 'ArRAUm4fbiU')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-10'), 'ArRAUm4fbiU')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">الصيف يعنى سوبيا 99 من العربية للمغات</h4>
@@ -1071,7 +1295,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-11">
                                     <img src="https://img.youtube.com/vi/tGQfcTLtSOM/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-11'), 'tGQfcTLtSOM')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-11'), 'tGQfcTLtSOM')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">اعلان لمنتج عصير روياسي</h4>
@@ -1084,7 +1314,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-12">
                                     <img src="https://img.youtube.com/vi/GoaXdWXSWe4/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-12'), 'GoaXdWXSWe4')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-12'), 'GoaXdWXSWe4')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">اعلان مسفار</h4>
@@ -1097,7 +1333,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-13">
                                     <img src="https://img.youtube.com/vi/_ZYQU0JalZo/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-13'), '_ZYQU0JalZo')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-13'), '_ZYQU0JalZo')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">المتحف المصري الكبير… افتتاح بحكاية جديدة</h4>
@@ -1110,7 +1352,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-14">
                                     <img src="https://img.youtube.com/vi/rQRK1N83jA4/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-14'), 'rQRK1N83jA4')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-14'), 'rQRK1N83jA4')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">اعلان لمنصه الغات</h4>
@@ -1123,7 +1371,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-15">
                                     <img src="https://img.youtube.com/vi/BoMaDjj5QpI/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-15'), 'BoMaDjj5QpI')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-15'), 'BoMaDjj5QpI')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">Easy Fit</h4>
@@ -1136,7 +1390,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-16">
                                     <img src="https://img.youtube.com/vi/3jaVVKGOi6Q/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-16'), '3jaVVKGOi6Q')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-16'), '3jaVVKGOi6Q')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">اعلان الحج</h4>
@@ -1149,7 +1409,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-17">
                                     <img src="https://img.youtube.com/vi/pHGEt3dFy_8/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-17'), 'pHGEt3dFy_8')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-17'), 'pHGEt3dFy_8')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">الحج</h4>
@@ -1162,7 +1428,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-18">
                                     <img src="https://img.youtube.com/vi/L1AKtFncsxc/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-18'), 'L1AKtFncsxc')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-18'), 'L1AKtFncsxc')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">فريشنا</h4>
@@ -1175,7 +1447,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-19">
                                     <img src="https://img.youtube.com/vi/8B1ogHqffCQ/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-19'), '8B1ogHqffCQ')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-19'), '8B1ogHqffCQ')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">رمان الباحة</h4>
@@ -1188,7 +1466,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-20">
                                     <img src="https://img.youtube.com/vi/HMyqyG3_urQ/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-20'), 'HMyqyG3_urQ')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-20'), 'HMyqyG3_urQ')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">بروه العقاريه</h4>
@@ -1201,7 +1485,13 @@
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-21">
                                     <img src="https://img.youtube.com/vi/zQrHYhTuCsE/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
-                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer" onclick="playVideo(document.getElementById('h-vid-21'), 'zQrHYhTuCsE')"></div>
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-21'), 'zQrHYhTuCsE')"></div>
                                 </div>
                                 <div class="p-4 text-center">
                                     <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">كيز برو</h4>
