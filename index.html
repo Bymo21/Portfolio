@@ -378,8 +378,8 @@
                     
                     <div class="motion-item motion-fade-up delay-100 mb-6 bg-white/5 p-6 rounded-xl border-r-4 border-accent relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-accent/5 pointer-events-none"></div>
-                        <!-- Fixed Quranic Verse styling for mobile -->
-                        <h3 class="text-lg md:text-2xl text-white font-serif leading-relaxed text-center" style="font-family: serif; text-wrap: balance;">
+                        <!-- Fixed Quranic Verse styling for mobile: single line, smaller font on mobile -->
+                        <h3 class="text-xs sm:text-lg md:text-2xl text-white font-serif leading-relaxed text-center" style="font-family: serif; white-space: nowrap;">
                             {‏وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْث لَا يَحْتَسِبُ}
                         </h3>
                         <span class="text-xs text-accent mt-3 block text-center font-bold tracking-wider">صدق الله العظيم</span>
@@ -1075,8 +1075,8 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                    <!-- Navigation Arrows for Vertical Ads -->
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-pagination"></div>
@@ -1845,7 +1845,7 @@
             direction: "horizontal",
             slidesPerView: 1,
             spaceBetween: 0,
-            loop: true,
+            loop: false, // تم تغيير هذا إلى false لمنع الدوران اللانهائي
             mousewheel: {
                 forceToAxis: true,
             },
