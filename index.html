@@ -154,15 +154,6 @@
             animation: whatsapp-pulse 2s infinite;
         }
 
-        /* Preloader Animation */
-        @keyframes loading-progress {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-        .animate-progress {
-            animation: loading-progress 2s ease-in-out forwards;
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -281,6 +272,8 @@
 </head>
 <body class="antialiased selection:bg-accent selection:text-bg">
 
+    <!-- Preloader Removed as requested -->
+
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300 transform translate-y-[-100%] opacity-0" id="navbar" style="transition: transform 0.8s ease, opacity 0.8s ease;">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -378,8 +371,8 @@
                     
                     <div class="motion-item motion-fade-up delay-100 mb-6 bg-white/5 p-6 rounded-xl border-r-4 border-accent relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-accent/5 pointer-events-none"></div>
-                        <!-- Fixed Quranic Verse: Scalable font size for consistency -->
-                        <h3 class="text-[3vw] md:text-xl lg:text-2xl text-white font-cairo leading-loose text-center whitespace-nowrap tracking-normal" style="direction: rtl;">
+                        <!-- Fixed Quranic Verse styling for mobile: single line, smaller font on mobile -->
+                        <h3 class="text-xs sm:text-lg md:text-2xl text-white font-serif leading-relaxed text-center" style="font-family: serif; white-space: nowrap;">
                             {‏وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْث لَا يَحْتَسِبُ}
                         </h3>
                         <span class="text-xs text-accent mt-3 block text-center font-bold tracking-wider">صدق الله العظيم</span>
@@ -389,8 +382,8 @@
                         أنا أحمد حمدي، أعمل على تحويل أفكارك إلى واقع من خلال محتوى مرئي وإعلانات إبداعية باستخدام التصوير السينمائي والمونتاج وتقنيات الذكاء الصناعي.
                     </p>
 
-                    <!-- Icons Section: Grid 2 cols, capped width to prevent stretching in desktop mode -->
-                    <div class="grid grid-cols-2 gap-4 motion-item motion-fade-up delay-300 mb-8 max-w-3xl mx-auto lg:mx-0">
+                    <!-- Icons Section: Converted to Grid (2 Columns) -->
+                    <div class="grid grid-cols-2 gap-4 motion-item motion-fade-up delay-300 mb-8">
                         
                         <!-- Cinematic Photography -->
                         <div class="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/5 h-full group/icon">
@@ -1120,7 +1113,26 @@
                             </div>
                         </div>
 
-                        <!-- Video 2 -->
+                        <!-- Video 2 (New Added Video) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-new-2">
+                                    <img src="https://img.youtube.com/vi/NVIdfyegl8g/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-new-2'), 'NVIdfyegl8g')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">القهوة اللي تهدي الفوضى</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 3 (Previously 2) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-2">
@@ -1139,7 +1151,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 3 -->
+                        <!-- Video 4 (Previously 3) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-3">
@@ -1158,7 +1170,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 4 -->
+                        <!-- Video 5 (Previously 4) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-4">
@@ -1177,7 +1189,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 5 -->
+                        <!-- Video 6 (Previously 5) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-5">
@@ -1196,7 +1208,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 6 -->
+                        <!-- Video 7 (Previously 6) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-6">
@@ -1215,7 +1227,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 7 -->
+                        <!-- Video 8 (Previously 7) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-7">
@@ -1234,7 +1246,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 8 -->
+                        <!-- Video 9 (Previously 8) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-8">
@@ -1253,7 +1265,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 9 -->
+                        <!-- Video 10 (Previously 9) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-9">
@@ -1272,7 +1284,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 10 -->
+                        <!-- Video 11 (Previously 10) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-10">
@@ -1291,7 +1303,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 11 -->
+                        <!-- Video 12 (Previously 11) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-11">
@@ -1310,7 +1322,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 12 -->
+                        <!-- Video 13 (Previously 12) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-12">
@@ -1329,7 +1341,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 13 -->
+                        <!-- Video 14 (Previously 13) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-13">
@@ -1348,7 +1360,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 14 (New) -->
+                        <!-- Video 15 (Previously 14) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-14">
@@ -1367,7 +1379,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 15: Easy Fit -->
+                        <!-- Video 16 (Previously 15) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-15">
@@ -1386,7 +1398,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 16: اعلان الحج -->
+                        <!-- Video 17 (Previously 16) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-16">
@@ -1405,7 +1417,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 17: الحج -->
+                        <!-- Video 18 (Previously 17) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-17">
@@ -1424,7 +1436,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 18: فريشنا -->
+                        <!-- Video 19 (Previously 18) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-18">
@@ -1443,7 +1455,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 19: رمان الباحة -->
+                        <!-- Video 20 (Previously 19) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-19">
@@ -1462,7 +1474,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 20: بروه العقاريه -->
+                        <!-- Video 21 (Previously 20) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-20">
@@ -1481,7 +1493,7 @@
                             </div>
                         </div>
 
-                        <!-- Video 21: كيز برو -->
+                        <!-- Video 22 (Previously 21) -->
                         <div class="swiper-slide">
                             <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
                                 <div class="aspect-video relative overflow-hidden" id="h-vid-21">
@@ -1501,9 +1513,6 @@
                         </div>
 
                     </div>
-                    <!-- Navigation Arrows Added for Horizontal Ads -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                     <div class="swiper-scrollbar"></div>
                 </div>
             </div>
@@ -1815,7 +1824,7 @@
             direction: "horizontal",
             slidesPerView: 1,
             spaceBetween: 0,
-            loop: false, // تم تغيير هذا إلى false لمنع الدوران اللانهائي
+            loop: false, 
             mousewheel: {
                 forceToAxis: true,
             },
@@ -1840,10 +1849,12 @@
             creativeEffect: {
                 prev: {
                     shadow: true,
-                    translate: ["-20%", 0, -1],
+                    // تم التعديل: إزاحة الشريحة السابقة لليمين بدلاً من اليسار
+                    translate: ["20%", 0, -1], 
                 },
                 next: {
-                    translate: ["100%", 0, 0],
+                    // تم التعديل: إزاحة الشريحة التالية لليسار لتدخل من اليسار
+                    translate: ["-100%", 0, 0], 
                 },
             },
             speed: 800,
