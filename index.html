@@ -4,7 +4,2118 @@
     <meta charset="UTF-8">
     <!-- Updated viewport to strictly prevent scaling on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimum-scale=1.0">
+    <title>المعرض الإبداعي |<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <!-- Updated viewport to strictly prevent scaling on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimum-scale=1.0">
     <title>المعرض الإبداعي | محفظة أعمال</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Config & Custom Styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0a0a0c',       /* أسود فحمي */
+                        card: '#141416',     /* رمادي داكن للكروت */
+                        accent: '#d4ff75',   /* ليموني كهربائي ناعم */
+                        secondary: '#c4b5fd', /* لافندر */
+                        muted: '#9ca3af',
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    animation: {
+                        'slow-spin': 'spin 10s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0a0a0c;
+            color: #f3f4f6;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+            touch-action: pan-x pan-y; /* Disables double-tap zoom and pinch zoom behaviors */
+        }
+
+        /* --- Cinematic Animation System --- */
+        
+        .motion-item {
+            transition-duration: 1.2s;
+            transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity, filter;
+        }
+
+        .motion-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        .motion-fade-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .motion-mask-container {
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;
+            /* Fix for Arabic Text Clipping */
+            padding-bottom: 0.2em; 
+            margin-bottom: -0.2em;
+        }
+        .motion-mask-text {
+            display: block;
+            transform: translateY(110%);
+            transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            line-height: 1.4; /* Increased line-height for Arabic readability */
+        }
+        .motion-mask-container.is-visible .motion-mask-text {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .motion-blur-in {
+            opacity: 0;
+            filter: blur(20px);
+            transform: scale(0.95);
+        }
+        .motion-blur-in.is-visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+        }
+
+        .motion-line {
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .motion-line.is-visible {
+            width: 100%;
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
+
+        /* Icon Specific Motion Graphics */
+        @keyframes focus-breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
+        .animate-focus { animation: focus-breathe 4s ease-in-out infinite; }
+
+        @keyframes float-think {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float-ai { animation: float-think 5s ease-in-out infinite; }
+
+        @keyframes action-tilt {
+            0%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(-15deg); }
+            20% { transform: rotate(0deg); }
+        }
+        .animate-action {
+            animation: action-tilt 3s ease-in-out infinite;
+            transform-origin: bottom left;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.3)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.8)); transform: scale(1.05); }
+        }
+        .animate-glow-bulb { animation: glow-pulse 3s ease-in-out infinite; }
+
+        /* WhatsApp Pulse Animation */
+        @keyframes whatsapp-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); transform: scale(1.1); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1); }
+        }
+        .animate-whatsapp {
+            animation: whatsapp-pulse 2s infinite;
+        }
+
+        /* --- Animation for Horizontal Arrows --- */
+        @keyframes arrow-pulse-glow {
+            0%, 100% { box-shadow: 0 0 8px rgba(212, 255, 117, 0.4); transform: scale(1); border-color: rgba(212, 255, 117, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(212, 255, 117, 0.8); transform: scale(1.15); border-color: rgba(212, 255, 117, 1); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4ff75;
+        }
+
+        .glass-nav {
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #f3f4f6 0%, #d4ff75 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Swiper Custom Styles */
+        .swiper-pagination-bullet {
+            background: #555;
+            opacity: 1;
+        }
+        .swiper-pagination-bullet-active {
+            background: #d4ff75;
+            width: 24px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Arrows */
+        .swiper-button-next, .swiper-button-prev {
+            color: #d4ff75;
+            width: 35px; /* Smaller on mobile */
+            height: 35px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+            z-index: 70; /* Increased z-index to be above video overlays */
+        }
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: 16px; /* Smaller icons on mobile */
+            font-weight: bold;
+        }
+
+        /* Apply pulse to Horizontal Ads Arrows specifically */
+        .myHorizontalSwiper .swiper-button-next,
+        .myHorizontalSwiper .swiper-button-prev {
+            animation: arrow-pulse-glow 1.5s infinite ease-in-out;
+            background-color: rgba(0, 0, 0, 0.8); 
+            border: 2px solid rgba(212, 255, 117, 0.5); 
+            color: #d4ff75;
+            opacity: 1 !important; /* Ensure always visible */
+        }
+
+        /* Pause animation on hover and scale up */
+        .myHorizontalSwiper .swiper-button-next:hover,
+        .myHorizontalSwiper .swiper-button-prev:hover {
+            transform: scale(1.1);
+        }
+        
+        .vertical-slide-overlay {
+            background: linear-gradient(to top, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.6) 40%, rgba(10,10,12,0.1) 100%);
+        }
+
+        /* Phone Frame Effect */
+        .phone-frame-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .phone-frame-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px) brightness(0.4);
+            transform: scale(1.1);
+        }
+        .phone-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            max-width: 400px;
+            aspect-ratio: 9/16;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 4px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* تكبير الصورة قليلاً لإخفاء الفراغات البيضاء عند الحواف */
+        .phone-content img {
+            transform: scale(1.05);
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .phone-content {
+                max-width: 100%;
+                border-radius: 20px; /* Keep radius on mobile for card feel */
+                border: 2px solid rgba(255, 255, 255, 0.1);
+                aspect-ratio: 9/16; /* Force aspect ratio on mobile */
+            }
+            .phone-frame-bg { display: none; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-bg">
+
+    <!-- Preloader Removed as requested -->
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 transform translate-y-[-100%] opacity-0" id="navbar" style="transition: transform 0.8s ease, opacity 0.8s ease;">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter text-white">
+                معرض أعمالي
+            </a>
+
+            <div class="hidden md:flex space-x-reverse space-x-8 text-sm font-medium">
+                <a href="#home" class="hover:text-accent transition-colors whitespace-nowrap">الرئيسية</a>
+                <a href="#about" class="hover:text-accent transition-colors whitespace-nowrap">من أنا</a>
+                <a href="#portfolio" class="hover:text-accent transition-colors whitespace-nowrap">أعمالي</a>
+                <a href="#posters" class="hover:text-accent transition-colors whitespace-nowrap">البوسترات</a>
+                <a href="#contact" class="px-5 py-2 border border-accent text-accent rounded-full hover:bg-accent hover:text-bg transition-all whitespace-nowrap">تواصل معي</a>
+            </div>
+
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-bg border-b border-gray-800 p-6 flex-col space-y-4 shadow-2xl">
+            <a href="#home" class="block hover:text-accent" onclick="toggleMenu()">الرئيسية</a>
+            <a href="#about" class="block hover:text-accent" onclick="toggleMenu()">من أنا</a>
+            <a href="#portfolio" class="block hover:text-accent" onclick="toggleMenu()">أعمالي</a>
+            <a href="#posters" class="block hover:text-accent" onclick="toggleMenu()">البوسترات</a>
+            <a href="#contact" class="block text-accent font-bold" onclick="toggleMenu()">تواصل معي</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden">
+        <div class="parallax-layer absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-[100px] motion-item motion-blur-in" data-speed="0.5"></div>
+        <div class="parallax-layer absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] motion-item motion-blur-in delay-200" data-speed="-0.3"></div>
+
+        <div class="container mx-auto px-6 text-center z-10">
+            <div class="motion-mask-container mb-4">
+                <p class="motion-mask-text text-accent text-sm md:text-base font-medium tracking-widest uppercase">صانع محتوى بصري</p>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-normal md:leading-snug">
+                <div class="motion-mask-container">
+                    <span class="motion-mask-text delay-100">أروي قصتك</span>
+                </div>
+                <br class="hidden md:block">
+                <div class="motion-mask-container">
+                    <span class="motion-mask-text delay-200 text-gradient">برؤية سينمائية</span>
+                </div>
+            </h1>
+            
+            <p class="motion-item motion-fade-up delay-300 text-muted text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light">
+                أحول الأفكار الجامدة إلى تجارب بصرية مذهلة تخطف الأنظار وتبقى في الذاكرة. التميز ليس خياراً، بل هو المعيار.
+            </p>
+            
+            <div class="motion-item motion-fade-up delay-400 flex flex-col md:flex-row justify-center gap-4">
+                <a href="#portfolio" class="px-8 py-4 bg-accent text-bg font-bold rounded-full hover:shadow-[0_0_20px_rgba(212,255,117,0.4)] transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 active:scale-95">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> شاهد أعمالي
+                </a>
+                <a href="#contact" class="px-8 py-4 border border-white/20 hover:bg-white/5 rounded-full transition-all duration-300 text-white transform hover:scale-105 active:scale-95">
+                    ابدأ مشروعك
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+            <i data-lucide="chevron-down" class="text-white w-6 h-6"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-card/30 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="motion-item motion-blur-in relative rounded-2xl overflow-hidden shadow-2xl group">
+                        <div class="aspect-[3/4] bg-gray-800 relative">
+                            <!-- Image without filters -->
+                            <img src="https://i.pinimg.com/736x/f0/de/bc/f0debc8ad5ad3f0163912a9522e9d8a2.jpg" alt="المبدع" class="object-cover w-full h-full transition-all duration-[1.5s] ease-out transform group-hover:scale-110">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-bg border border-gray-800 p-6 rounded-xl shadow-xl hidden md:block motion-item motion-fade-up delay-300">
+                            <div class="flex items-center gap-4">
+                                <div class="text-4xl font-bold text-accent">5+</div>
+                                <div class="text-sm text-gray-400 leading-tight">سنوات من<br>الإبداع المستمر</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-1 bg-accent rounded-full motion-item motion-line"></div>
+                        <div class="motion-mask-container">
+                             <h2 class="motion-mask-text text-3xl md:text-4xl font-bold">من أنا</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="motion-item motion-fade-up delay-100 mb-6 bg-white/5 p-6 rounded-xl border-r-4 border-accent relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-full bg-accent/5 pointer-events-none"></div>
+                        <!-- Fixed Quranic Verse styling: increased size and allowed wrapping -->
+                        <h3 class="text-lg sm:text-xl md:text-3xl text-white font-serif leading-relaxed text-center" style="font-family: serif;">
+                            {‏وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْث لَا يَحْتَسِبُ}
+                        </h3>
+                        <span class="text-xs text-accent mt-3 block text-center font-bold tracking-wider">صدق الله العظيم</span>
+                    </div>
+
+                    <p class="motion-item motion-fade-up delay-200 text-gray-400 leading-relaxed mb-8 text-lg">
+                        أنا أحمد حمدي، أعمل على تحويل أفكارك إلى واقع من خلال محتوى مرئي وإعلانات إبداعية باستخدام التصوير السينمائي والمونتاج وتقنيات الذكاء الصناعي.
+                    </p>
+
+                    <!-- Icons Section: Converted to Grid (2 Columns) -->
+                    <div class="grid grid-cols-2 gap-4 motion-item motion-fade-up delay-300 mb-8">
+                        
+                        <!-- Cinematic Photography -->
+                        <div class="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/5 h-full group/icon">
+                            <div class="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center text-accent shrink-0 animate-focus">
+                                <i data-lucide="camera" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">تصوير سينمائي</h4>
+                                <p class="text-xs text-gray-500 mt-1">زوايا وإضاءة احترافية</p>
+                            </div>
+                        </div>
+
+                        <!-- AI Generation -->
+                        <div class="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/5 h-full group/icon">
+                            <div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0 animate-float-ai">
+                                <i data-lucide="brain-circuit" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">ذكاء اصطناعي</h4>
+                                <p class="text-xs text-gray-500 mt-1">توليد أفكار ومحتوى</p>
+                            </div>
+                        </div>
+
+                        <!-- Video Editing -->
+                        <div class="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/5 h-full group/icon">
+                            <div class="w-14 h-14 rounded-full bg-pink-500/10 flex items-center justify-center text-pink-400 shrink-0 animate-action">
+                                <i data-lucide="clapperboard" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">مونتاج إبداعي</h4>
+                                <p class="text-xs text-gray-500 mt-1">قصص بصرية متكاملة</p>
+                            </div>
+                        </div>
+
+                        <!-- Creative Production -->
+                        <div class="flex flex-col items-center text-center gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/5 h-full group/icon">
+                            <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 shrink-0 animate-glow-bulb">
+                                <i data-lucide="lightbulb" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">إنتاج إبداعي</h4>
+                                <p class="text-xs text-gray-500 mt-1">رؤية فنية شاملة</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-12 bg-bg overflow-hidden">
+        <div class="container mx-auto px-6">
+            
+            <!-- SECTION 1: Vertical Ads (Reels / TikTok) -->
+            <div class="mb-20">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="motion-item motion-fade-up">
+                        <h2 class="text-3xl md:text-5xl font-bold mt-2">إعلانات عمودية</h2>
+                    </div>
+                    <div class="hidden md:flex items-center gap-2 text-gray-500 text-sm motion-item motion-fade-up delay-200">
+                        <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+                        <span>استخدم الأسهم للتقليب</span>
+                    </div>
+                </div>
+
+                <div class="swiper myVerticalAdsSwiper h-[80vh] w-full rounded-3xl overflow-hidden border border-white/5 relative shadow-2xl bg-black motion-item motion-blur-in delay-200">
+                    <div class="swiper-wrapper">
+                        
+                        <!-- NEWLY ADDED: Video 1 (Moved to start) -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/kcV0B3Fyg9w/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-latest-1">
+                                    <img src="https://img.youtube.com/vi/kcV0B3Fyg9w/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-latest-1'), 'kcV0B3Fyg9w')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NEWLY ADDED: Video 2 (Moved to start) -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/Ask7Pe_jpL0/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-latest-2">
+                                    <img src="https://img.youtube.com/vi/Ask7Pe_jpL0/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-latest-2'), 'Ask7Pe_jpL0')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
+                                            <div class="flex items-center gap-2 text-white text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NEWLY ADDED: Video 3 (Moved to start) -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/RItaZWR6hH8/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-latest-3">
+                                    <img src="https://img.youtube.com/vi/RItaZWR6hH8/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-latest-3'), 'RItaZWR6hH8')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 1 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/MP-Jy-_Za4w/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-1">
+                                    <img src="https://img.youtube.com/vi/MP-Jy-_Za4w/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-1'), 'MP-Jy-_Za4w')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 2 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/eQz9ZxH903o/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-2">
+                                    <img src="https://img.youtube.com/vi/eQz9ZxH903o/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-2'), 'eQz9ZxH903o')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 3 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/_wVvMOZzgW0/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-3">
+                                    <img src="https://img.youtube.com/vi/_wVvMOZzgW0/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-3'), '_wVvMOZzgW0')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
+                                            <div class="flex items-center gap-2 text-white text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 4 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/8N5VUJhMgYs/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-4">
+                                    <img src="https://img.youtube.com/vi/8N5VUJhMgYs/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-4'), '8N5VUJhMgYs')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 5 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/IBl1zT2k2zA/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-5">
+                                    <img src="https://img.youtube.com/vi/IBl1zT2k2zA/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-5'), 'IBl1zT2k2zA')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 6 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/PvLexpRxyxQ/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-6">
+                                    <img src="https://img.youtube.com/vi/PvLexpRxyxQ/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-6'), 'PvLexpRxyxQ')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
+                                            <div class="flex items-center gap-2 text-white text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 7 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/uL5Vuz1zb64/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-7">
+                                    <img src="https://img.youtube.com/vi/uL5Vuz1zb64/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-7'), 'uL5Vuz1zb64')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 8 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/Bosk9wIlRqA/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-8">
+                                    <img src="https://img.youtube.com/vi/Bosk9wIlRqA/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-8'), 'Bosk9wIlRqA')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 9 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/mlB-VAo8U6k/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-9">
+                                    <img src="https://img.youtube.com/vi/mlB-VAo8U6k/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-9'), 'mlB-VAo8U6k')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
+                                            <div class="flex items-center gap-2 text-white text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 10 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/8THoIgcXJOE/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-10">
+                                    <img src="https://img.youtube.com/vi/8THoIgcXJOE/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-10'), '8THoIgcXJOE')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 11 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/rPm8aiK_gFU/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-11">
+                                    <img src="https://img.youtube.com/vi/rPm8aiK_gFU/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-11'), 'rPm8aiK_gFU')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 12 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/MQHHp-F0Wbc/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-12">
+                                    <img src="https://img.youtube.com/vi/MQHHp-F0Wbc/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-12'), 'MQHHp-F0Wbc')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
+                                            <div class="flex items-center gap-2 text-white text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 13 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/PXppZVXnPcU/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-13">
+                                    <img src="https://img.youtube.com/vi/PXppZVXnPcU/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-13'), 'PXppZVXnPcU')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 14 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/AItLCyRVHE0/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-14">
+                                    <img src="https://img.youtube.com/vi/AItLCyRVHE0/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-14'), 'AItLCyRVHE0')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Video 15 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/zcbU8hVReZI/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-new-15">
+                                    <img src="https://img.youtube.com/vi/zcbU8hVReZI/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-new-15'), 'zcbU8hVReZI')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
+                                            <div class="flex items-center gap-2 text-white text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Existing Videos ... -->
+                        <!-- Short 1 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/xRWF01Z-RL8/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-1">
+                                    <img src="https://img.youtube.com/vi/xRWF01Z-RL8/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-1'), 'xRWF01Z-RL8')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 2 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/1wzhvSzLXG0/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-2">
+                                    <img src="https://img.youtube.com/vi/1wzhvSzLXG0/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-2'), '1wzhvSzLXG0')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 3 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/qB58FYGJqus/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-3">
+                                    <img src="https://img.youtube.com/vi/qB58FYGJqus/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-3'), 'qB58FYGJqus')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
+                                            <div class="flex items-center gap-2 text-white text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 4 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/VnQ0uVVG6ko/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-4">
+                                    <img src="https://img.youtube.com/vi/VnQ0uVVG6ko/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-4'), 'VnQ0uVVG6ko')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 5 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/-YZ6sll5lgw/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-5">
+                                    <img src="https://img.youtube.com/vi/-YZ6sll5lgw/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-5'), '-YZ6sll5lgw')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 6 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/0Qhwj_IwBnw/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-6">
+                                    <img src="https://img.youtube.com/vi/0Qhwj_IwBnw/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-6'), '0Qhwj_IwBnw')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
+                                            <div class="flex items-center gap-2 text-white text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 7 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/oBk6TLzWfjM/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-7">
+                                    <img src="https://img.youtube.com/vi/oBk6TLzWfjM/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-7'), 'oBk6TLzWfjM')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 8 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/jRoNuB-kBvI/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-8">
+                                    <img src="https://img.youtube.com/vi/jRoNuB-kBvI/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-8'), 'jRoNuB-kBvI')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 9 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/pnDMM2VkBt4/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-9">
+                                    <img src="https://img.youtube.com/vi/pnDMM2VkBt4/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-9'), 'pnDMM2VkBt4')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-white text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">TikTok</span>
+                                            <div class="flex items-center gap-2 text-white text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 10 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/sknU1NwM3xI/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-10">
+                                    <img src="https://img.youtube.com/vi/sknU1NwM3xI/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-10'), 'sknU1NwM3xI')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-accent text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Shorts</span>
+                                            <div class="flex items-center gap-2 text-accent text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short 11 -->
+                        <div class="swiper-slide">
+                            <div class="phone-frame-container">
+                                <div class="phone-frame-bg" style="background-image: url('https://img.youtube.com/vi/uT2MYBp70pM/hqdefault.jpg');"></div>
+                                <div class="phone-content relative group" id="v-vid-11">
+                                    <img src="https://img.youtube.com/vi/uT2MYBp70pM/hqdefault.jpg" class="w-full h-full object-cover" alt="Shorts">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 cursor-pointer" onclick="playVideo(document.getElementById('v-vid-11'), 'uT2MYBp70pM')">
+                                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="bg-secondary text-bg px-2 py-1 rounded text-[10px] font-bold mb-2 inline-block">Reels</span>
+                                            <div class="flex items-center gap-2 text-secondary text-sm font-bold mt-2">
+                                                <i data-lucide="play-circle" class="w-4 h-4"></i> تشغيل
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Navigation Arrows for Vertical Ads -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Horizontal Ads (YouTube / TV / Web) -->
+            <div>
+                <div class="flex items-center justify-between mb-6">
+                    <div class="motion-item motion-fade-up">
+                        <h3 class="text-2xl md:text-4xl font-bold mt-1 flex items-center gap-2">
+                            إعلانات أفقية
+                        </h3>
+                    </div>
+                     <div class="hidden md:flex items-center gap-2 text-gray-500 text-sm motion-item motion-fade-up delay-200">
+                        <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
+                        <span>اسحب لليمين أو اليسار</span>
+                    </div>
+                </div>
+                
+                <div class="swiper myHorizontalSwiper overflow-visible motion-item motion-fade-up delay-300">
+                    <div class="swiper-wrapper pb-10">
+                        
+                        <!-- Video 1 -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-1">
+                                    <img src="https://img.youtube.com/vi/lGbKT8wgKsg/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-1'), 'lGbKT8wgKsg')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">عيادات إحسان المتنقلة – رعايتك الصحية في كل مكان</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 2 (New Added Video) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-new-2">
+                                    <img src="https://img.youtube.com/vi/NVIdfyegl8g/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-new-2'), 'NVIdfyegl8g')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">القهوة اللي تهدي الفوضى</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 3 (Previously 2) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-2">
+                                    <img src="https://img.youtube.com/vi/PcD13GnoZJY/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-2'), 'PcD13GnoZJY')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">أولاد عصمان للأثاث – خبرة تتحدث وجودة تُلمس</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 4 (Previously 3) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-3">
+                                    <img src="https://img.youtube.com/vi/pSeJ_oDMgng/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-3'), 'pSeJ_oDMgng')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">أفضل أنواع التمر السعودي الفاخر</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 5 (Previously 4) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-4">
+                                    <img src="https://img.youtube.com/vi/ujghmD8D3xw/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-4'), 'ujghmD8D3xw')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">عسل طبيعي... نقي من قلب الخلية</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 6 (Previously 5) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-5">
+                                    <img src="https://img.youtube.com/vi/Uji3itqnJfg/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-5'), 'Uji3itqnJfg')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">لبن طبيعي بطعم الانتعاش..</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 7 (Previously 6) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-6">
+                                    <img src="https://img.youtube.com/vi/WYoktRemrHg/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-6'), 'WYoktRemrHg')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">الحجز التحفظي حماية لحقك المالي</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 8 (Previously 7) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-7">
+                                    <img src="https://img.youtube.com/vi/nrQqf-bGQ0Y/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-7'), 'nrQqf-bGQ0Y')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">Ledemy.. طريقك للتعلم أينما كنت</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 9 (Previously 8) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-8">
+                                    <img src="https://img.youtube.com/vi/LXSLGqFESvM/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-8'), 'LXSLGqFESvM')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">حركة و بركة</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 10 (Previously 9) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-9">
+                                    <img src="https://img.youtube.com/vi/5bpArJGMpHM/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-9'), '5bpArJGMpHM')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">ديرتي تستاهل: كل كفاءة في مكانها الصحيح</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 11 (Previously 10) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-10">
+                                    <img src="https://img.youtube.com/vi/ArRAUm4fbiU/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-10'), 'ArRAUm4fbiU')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">الصيف يعنى سوبيا 99 من العربية للمغات</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 12 (Previously 11) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-11">
+                                    <img src="https://img.youtube.com/vi/tGQfcTLtSOM/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-11'), 'tGQfcTLtSOM')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">اعلان لمنتج عصير روياسي</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 13 (Previously 12) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-12">
+                                    <img src="https://img.youtube.com/vi/GoaXdWXSWe4/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-12'), 'GoaXdWXSWe4')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">اعلان مسفار</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 14 (Previously 13) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-13">
+                                    <img src="https://img.youtube.com/vi/_ZYQU0JalZo/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-13'), '_ZYQU0JalZo')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">المتحف المصري الكبير… افتتاح بحكاية جديدة</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 15 (Previously 14) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-14">
+                                    <img src="https://img.youtube.com/vi/rQRK1N83jA4/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-14'), 'rQRK1N83jA4')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">اعلان لمنصه الغات</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 16 (Previously 15) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-15">
+                                    <img src="https://img.youtube.com/vi/BoMaDjj5QpI/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-15'), 'BoMaDjj5QpI')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">Easy Fit</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 17 (Previously 16) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-16">
+                                    <img src="https://img.youtube.com/vi/3jaVVKGOi6Q/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-16'), '3jaVVKGOi6Q')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">اعلان الحج</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 18 (Previously 17) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-17">
+                                    <img src="https://img.youtube.com/vi/pHGEt3dFy_8/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-17'), 'pHGEt3dFy_8')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">الحج</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 19 (Previously 18) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-18">
+                                    <img src="https://img.youtube.com/vi/L1AKtFncsxc/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-18'), 'L1AKtFncsxc')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">فريشنا</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 20 (Previously 19) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-19">
+                                    <img src="https://img.youtube.com/vi/8B1ogHqffCQ/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-19'), '8B1ogHqffCQ')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">رمان الباحة</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 21 (Previously 20) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-20">
+                                    <img src="https://img.youtube.com/vi/HMyqyG3_urQ/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-20'), 'HMyqyG3_urQ')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">بروه العقاريه</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 22 (Previously 21) -->
+                        <div class="swiper-slide">
+                            <div class="bg-card rounded-xl overflow-hidden group cursor-pointer border border-white/5 h-full transform transition-all duration-500 hover:-translate-y-2">
+                                <div class="aspect-video relative overflow-hidden" id="h-vid-21">
+                                    <img src="https://img.youtube.com/vi/zQrHYhTuCsE/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Thumbnail">
+                                    <!-- Play Icon Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <div class="w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:bg-accent group-hover:text-black transition-colors duration-300">
+                                            <i data-lucide="play" class="w-8 h-8 text-white group-hover:text-black fill-current ml-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 flex items-center justify-center cursor-pointer z-10" onclick="playVideo(document.getElementById('h-vid-21'), 'zQrHYhTuCsE')"></div>
+                                </div>
+                                <div class="p-4 text-center">
+                                    <h4 class="font-bold text-base md:text-lg group-hover:text-accent transition-colors">كيز برو</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-scrollbar"></div>
+                    <!-- Navigation Arrows for Horizontal Ads (Added) -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Posters Section (Slider) -->
+    <section id="posters" class="py-24 bg-card/20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 motion-item motion-fade-up">
+                <span class="text-secondary text-sm tracking-widest uppercase font-bold">تصاميم جرافيك</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-2">معرض البوسترات</h2>
+            </div>
+
+            <div class="motion-item motion-fade-up relative">
+                <div class="flex justify-end mb-4 text-gray-500 text-sm gap-2">
+                    <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
+                    <span>تصفح البوسترات</span>
+                </div>
+
+                <div class="swiper myPostersSwiper overflow-visible pb-10">
+                    <div class="swiper-wrapper">
+                        
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/1200x/88/1f/46/881f466609cdacdfb74a283b28837bd9.jpg')">
+                                <img src="https://i.pinimg.com/1200x/88/1f/46/881f466609cdacdfb74a283b28837bd9.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 1">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">تصميم إبداعي</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/1200x/dc/4d/8a/dc4d8af6a8561cdf247ed6a7bcdd3699.jpg')">
+                                <img src="https://i.pinimg.com/1200x/dc/4d/8a/dc4d8af6a8561cdf247ed6a7bcdd3699.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 2">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">بوستر فني</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/736x/27/d0/95/27d0950307d108ee60350f39868925b6.jpg')">
+                                <img src="https://i.pinimg.com/736x/27/d0/95/27d0950307d108ee60350f39868925b6.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 3">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">دمج رقمي</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/1200x/82/c0/b1/82c0b17385e6c79f2980b040b46834cd.jpg')">
+                                <img src="https://i.pinimg.com/1200x/82/c0/b1/82c0b17385e6c79f2980b040b46834cd.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 4">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">جرافيك حديث</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/1200x/00/56/77/0056774b98e4a55b96ad61f86a8f10e8.jpg')">
+                                <img src="https://i.pinimg.com/1200x/00/56/77/0056774b98e4a55b96ad61f86a8f10e8.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 5">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">تصميم سوشيال ميديا</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/1200x/39/c2/0a/39c20a1e3dc0997a8217622a8d8e98fc.jpg')">
+                                <img src="https://i.pinimg.com/1200x/39/c2/0a/39c20a1e3dc0997a8217622a8d8e98fc.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 6">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">فن بصري</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/1200x/b0/6f/66/b06f6620da2488380bcb42aaad8107c6.jpg')">
+                                <img src="https://i.pinimg.com/1200x/b0/6f/66/b06f6620da2488380bcb42aaad8107c6.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 7">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">تصميم إعلاني</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/1200x/fc/d8/ec/fcd8ecd8a8179f65f704ce684f532d0f.jpg')">
+                                <img src="https://i.pinimg.com/1200x/fc/d8/ec/fcd8ecd8a8179f65f704ce684f532d0f.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 8">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">هوية بصرية</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/736x/36/e8/15/36e815e33fa26623a5714c663add41d6.jpg')">
+                                <img src="https://i.pinimg.com/736x/36/e8/15/36e815e33fa26623a5714c663add41d6.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 9">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">تلاعب بالصور</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/736x/1a/94/3e/1a943e8b12f87091ec360e4af228ae52.jpg')">
+                                <img src="https://i.pinimg.com/736x/1a/94/3e/1a943e8b12f87091ec360e4af228ae52.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 10">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">تصميم غلاف</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/736x/3c/08/ae/3c08ae66781c331d24c6323876fd529e.jpg')">
+                                <img src="https://i.pinimg.com/736x/3c/08/ae/3c08ae66781c331d24c6323876fd529e.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 11">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">فن رقمي</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/736x/21/50/ef/2150ef3639de1fa7b61b756ea88c0ed0.jpg')">
+                                <img src="https://i.pinimg.com/736x/21/50/ef/2150ef3639de1fa7b61b756ea88c0ed0.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 12">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">بوستر سينمائي</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/1200x/06/f6/00/06f6003d84d8aa3bc36645fc0b56c6f9.jpg')">
+                                <img src="https://i.pinimg.com/1200x/06/f6/00/06f6003d84d8aa3bc36645fc0b56c6f9.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 13">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">تصميم تجاري</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="group relative cursor-zoom-in overflow-hidden rounded-xl border border-white/5 aspect-[2/3]" onclick="openImageModal('https://i.pinimg.com/736x/38/42/71/38427107ce6fd56fb02724d57d6d4024.jpg')">
+                                <img src="https://i.pinimg.com/736x/38/42/71/38427107ce6fd56fb02724d57d6d4024.jpg" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Poster 14">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                    <p class="text-white font-bold">إبداع بصري</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-button-next !text-white !w-10 !h-10 !bg-black/50 !rounded-full !after:text-sm"></div>
+                    <div class="swiper-button-prev !text-white !w-10 !h-10 !bg-black/50 !rounded-full !after:text-sm"></div>
+                    <div class="swiper-scrollbar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gradient-to-t from-black to-card/50 relative overflow-hidden">
+        <!-- Background Bloom -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="bg-card/40 border border-white/5 rounded-3xl backdrop-blur-md shadow-2xl overflow-hidden motion-item motion-fade-up">
+                <div class="flex flex-col md:flex-row">
+                    
+                    <!-- Text Content Area -->
+                    <div class="w-full md:w-3/5 p-10 md:p-16 flex flex-col justify-center text-center md:text-right border-b md:border-b-0 md:border-l border-white/5">
+                        <span class="text-accent text-sm font-bold tracking-widest uppercase mb-2 block">تواصل معي</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white leading-snug mb-4">
+                            هل لديك فكرة؟ <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">لنحولها إلى واقع.</span>
+                        </h2>
+                        <p class="text-gray-400 text-base leading-relaxed mb-6">
+                            متاح لمشاريع التصوير، المونتاج، والذكاء الاصطناعي.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row items-center md:justify-start justify-center gap-6 text-sm text-gray-500">
+                            <div class="flex items-center gap-2">
+                                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                <span>متاح للعمل الحر</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                <span>سوهاج</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Area (WhatsApp) -->
+                    <div class="w-full md:w-2/5 p-10 bg-white/5 flex flex-col items-center justify-center relative group overflow-hidden">
+                        <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        <a href="https://wa.me/201104780394" target="_blank" class="relative z-10 block w-32 h-32 md:w-40 md:h-40 rounded-full p-2 border border-white/10 group-hover:border-accent/50 transition-all duration-500 animate-whatsapp">
+                            <div class="w-full h-full rounded-full overflow-hidden relative">
+                                <img src="https://i.pinimg.com/1200x/74/15/d0/7415d00f6b719e40a4b1f9a75fc7eea5.jpg" alt="WhatsApp Contact" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                            </div>
+                            <!-- Status Badge -->
+                            <div class="absolute bottom-2 right-2 w-8 h-8 bg-[#25D366] rounded-full flex items-center justify-center border-4 border-card text-white">
+                                <i data-lucide="message-circle" class="w-4 h-4 fill-current"></i>
+                            </div>
+                        </a>
+
+                        <h3 class="mt-6 text-xl font-bold text-white group-hover:text-accent transition-colors">تواصل عبر واتساب</h3>
+                        
+                        <a href="https://wa.me/201104780394" target="_blank" class="mt-6 px-6 py-2 rounded-full border border-white/10 text-white text-sm hover:bg-white hover:text-black transition-all">
+                            ابدأ المحادثة
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-black border-t border-gray-900 text-center text-gray-600 text-sm">
+        <p>&copy; 2024 جميع الحقوق محفوظة. تصميم وتطوير محفظة إبداعية.</p>
+    </footer>
+
+    <!-- Video Modal (Removed - replaced with inline) -->
+    
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden items-center justify-center p-4 transition-all duration-300 opacity-0" style="transition: opacity 0.5s ease;" onclick="closeImageModal()">
+        <button onclick="closeImageModal()" class="absolute top-6 right-6 text-white hover:text-accent transition-colors z-[70]">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <img id="modalImage" src="" alt="Full View" class="max-w-full max-h-[90vh] object-contain rounded shadow-2xl transform scale-95 transition-transform duration-500 ease-out">
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // -----------------------
+        // MOTION GRAPHICS SYSTEM
+        // -----------------------
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.05
+        };
+
+        const motionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const motionElements = document.querySelectorAll('.motion-item, .motion-fade-up, .motion-blur-in, .motion-mask-container, .motion-line');
+        motionElements.forEach((el) => {
+            motionObserver.observe(el);
+        });
+
+        // Updated Window Load with Preloader Logic
+        window.addEventListener('load', () => {
+             const preloader = document.getElementById('preloader');
+             const nav = document.getElementById('navbar');
+             
+             // Min time to show logo (1.5s) then fade out
+             setTimeout(() => {
+                 if(preloader) {
+                     preloader.classList.add('opacity-0', 'pointer-events-none');
+                 }
+                 
+                 // Show Navbar after preloader starts fading
+                 if(nav) {
+                     setTimeout(() => {
+                        nav.classList.remove('translate-y-[-100%]', 'opacity-0');
+                     }, 500);
+                 }
+             }, 2000);
+        });
+        
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (nav) {
+                if (window.scrollY > 50) {
+                    nav.classList.add('shadow-lg');
+                } else {
+                    nav.classList.remove('shadow-lg');
+                }
+            }
+            
+            const blobs = document.querySelectorAll('.parallax-layer');
+            blobs.forEach(blob => {
+                const speed = blob.getAttribute('data-speed');
+                const yPos = -(window.scrollY * speed);
+                blob.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+
+        // -----------------------
+        // SLIDERS CONFIGURATION
+        // -----------------------
+        
+        // Vertical Ads Slider (Horizontal Scrolling)
+        var swiperVerticalAds = new Swiper(".myVerticalAdsSwiper", {
+            direction: "horizontal",
+            slidesPerView: 1, // Force 1 slide always
+            spaceBetween: 20,
+            loop: false, 
+            mousewheel: {
+                forceToAxis: true,
+            },
+            centeredSlides: true, // Center the single slide
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".myVerticalAdsSwiper .swiper-button-next",
+                prevEl: ".myVerticalAdsSwiper .swiper-button-prev",
+            },
+            // Add events to stop video on interaction
+            on: {
+                slideChange: function () {
+                    stopVideos(this);
+                },
+                sliderMove: function () {
+                    stopVideos(this);
+                },
+                touchStart: function () {
+                    stopVideos(this);
+                },
+                transitionStart: function () {
+                    stopVideos(this);
+                }
+            },
+            speed: 800,
+        });
+
+        // Horizontal Ads Slider
+        var swiperHorizontal = new Swiper(".myHorizontalSwiper", {
+            slidesPerView: 1.2,
+            spaceBetween: 20,
+            freeMode: true,
+            navigation: {
+                nextEl: ".myHorizontalSwiper .swiper-button-next",
+                prevEl: ".myHorizontalSwiper .swiper-button-prev",
+            },
+            // Add events to stop video on interaction
+            on: {
+                slideChange: function () {
+                    stopVideos(this);
+                },
+                sliderMove: function () {
+                    stopVideos(this);
+                },
+                // Added additional events to ensure video stops immediately
+                touchStart: function () {
+                    stopVideos(this);
+                },
+                transitionStart: function () {
+                    stopVideos(this);
+                }
+            },
+            scrollbar: {
+                el: ".swiper-scrollbar",
+                hide: false,
+                draggable: true,
+            },
+            speed: 800,
+            breakpoints: {
+                640: { slidesPerView: 2.2 },
+                1024: { slidesPerView: 3.2 },
+            },
+        });
+
+        // Initialize Posters Swiper
+        var swiperPosters = new Swiper(".myPostersSwiper", {
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+            freeMode: true,
+            scrollbar: {
+                el: ".swiper-scrollbar",
+                hide: false,
+                draggable: true,
+            },
+            navigation: {
+                nextEl: ".myPostersSwiper .swiper-button-next",
+                prevEl: ".myPostersSwiper .swiper-button-prev",
+            },
+            speed: 800,
+            breakpoints: {
+                640: { slidesPerView: 2.5 },
+                1024: { slidesPerView: 3.5 },
+                1280: { slidesPerView: 4.5 },
+            },
+        });
+
+        // Initialize Icons Swiper
+        var swiperIcons = new Swiper(".myIconsSwiper", {
+            slidesPerView: 2.2, 
+            spaceBetween: 15,
+            freeMode: true,
+            speed: 800,
+            breakpoints: {
+                640: { slidesPerView: 3.2 }, 
+                1024: { slidesPerView: 4 },   
+            },
+        });
+
+        // -----------------------
+        // VIDEO PLAYBACK LOGIC
+        // -----------------------
+        
+        // Function to stop all playing videos in a specific swiper instance
+        function stopVideos(swiper) {
+            const playingContainers = swiper.el.querySelectorAll('.playing-video');
+            playingContainers.forEach(container => {
+                if (container.originalContent) {
+                    container.innerHTML = container.originalContent;
+                    container.classList.remove('playing-video');
+                }
+            });
+        }
+
+        // Updated playVideo function to store state
+        function playVideo(container, videoId) {
+            if (!container) return;
+            
+            // Save original content (thumbnail) if not saved yet
+            if (!container.originalContent) {
+                container.originalContent = container.innerHTML;
+            }
+            
+            // Mark as playing
+            container.classList.add('playing-video');
+            
+            const isHorizontal = container.id && container.id.startsWith('h-');
+            let overlayHTML = '';
+
+            if (isHorizontal) {
+                // Add transparent overlays on edges to allow swiping while video plays
+                // Left 10%, Right 10%, Top 20% - keeping center and bottom accessible for controls
+                overlayHTML = `
+                    <div class="absolute top-0 left-0 w-[10%] h-[80%] z-[60] bg-transparent"></div>
+                    <div class="absolute top-0 right-0 w-[10%] h-[80%] z-[60] bg-transparent"></div>
+                    <div class="absolute top-0 left-0 w-full h-[15%] z-[60] bg-transparent"></div>
+                `;
+            }
+            
+            // Replace with iframe
+            container.innerHTML = `
+                ${overlayHTML}
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full absolute inset-0 z-50"></iframe>
+            `;
+        }
+
+        // -----------------------
+        // IMAGE MODAL
+        // -----------------------
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+
+        function openImageModal(src) {
+            if(modalImage && imageModal) {
+                modalImage.src = src;
+                imageModal.classList.remove('hidden');
+                 requestAnimationFrame(() => {
+                    imageModal.classList.remove('opacity-0');
+                    modalImage.classList.remove('scale-95');
+                    modalImage.classList.add('scale-100');
+                });
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeImageModal() {
+             if(modalImage && imageModal) {
+                imageModal.classList.add('opacity-0');
+                modalImage.classList.remove('scale-100');
+                modalImage.classList.add('scale-95');
+                setTimeout(() => {
+                    imageModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if(menu) {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (imageModal && !imageModal.classList.contains('hidden')) closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html></title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -2104,3 +4215,4 @@
     </script>
 </body>
 </html>
+
