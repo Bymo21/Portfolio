@@ -260,6 +260,14 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             border: 4px solid rgba(255, 255, 255, 0.1);
         }
+
+        /* تكبير الصورة قليلاً لإخفاء الفراغات البيضاء عند الحواف */
+        .phone-content img {
+            transform: scale(1.05);
+            width: 100%;
+            height: 100%;
+        }
+
         @media (max-width: 768px) {
             .phone-content {
                 max-width: 100%;
@@ -372,8 +380,8 @@
                     
                     <div class="motion-item motion-fade-up delay-100 mb-6 bg-white/5 p-6 rounded-xl border-r-4 border-accent relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-accent/5 pointer-events-none"></div>
-                        <!-- Fixed Quranic Verse styling for mobile: single line, smaller font on mobile -->
-                        <h3 class="text-xs sm:text-lg md:text-2xl text-white font-serif leading-relaxed text-center" style="font-family: serif; white-space: nowrap;">
+                        <!-- Fixed Quranic Verse styling: increased size and allowed wrapping -->
+                        <h3 class="text-lg sm:text-xl md:text-3xl text-white font-serif leading-relaxed text-center" style="font-family: serif;">
                             {‏وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْث لَا يَحْتَسِبُ}
                         </h3>
                         <span class="text-xs text-accent mt-3 block text-center font-bold tracking-wider">صدق الله العظيم</span>
