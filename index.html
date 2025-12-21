@@ -1897,12 +1897,13 @@
         // Vertical Ads Slider (Horizontal Scrolling)
         var swiperVerticalAds = new Swiper(".myVerticalAdsSwiper", {
             direction: "horizontal",
-            slidesPerView: 1,
-            spaceBetween: 0,
+            slidesPerView: 1, // Force 1 slide always
+            spaceBetween: 20,
             loop: false, 
             mousewheel: {
                 forceToAxis: true,
             },
+            centeredSlides: true, // Center the single slide
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -1918,19 +1919,13 @@
                 },
                 sliderMove: function () {
                     stopVideos(this);
+                },
+                touchStart: function () {
+                    stopVideos(this);
+                },
+                transitionStart: function () {
+                    stopVideos(this);
                 }
-            },
-            effect: "creative",
-            creativeEffect: {
-                prev: {
-                    shadow: true,
-                    // تم التعديل: إزاحة الشريحة السابقة لليمين بدلاً من اليسار
-                    translate: ["20%", 0, -1], 
-                },
-                next: {
-                    // تم التعديل: إزاحة الشريحة التالية لليسار لتدخل من اليسار
-                    translate: ["-100%", 0, 0], 
-                },
             },
             speed: 800,
         });
